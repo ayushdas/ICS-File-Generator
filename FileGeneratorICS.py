@@ -1,0 +1,23 @@
+addEvent = input("Do you want to add an event (y/n): ")
+f= open("events.ics","w+")
+while(addEvent == "y"):
+    f.write("BEGIN:VCALENDAR\nVERSION:1.0\nBEGIN:VEVENT\n")
+    summary = input("Enter the event name: ")
+    location = input("Enter the location: ")
+    description = input("Enter the description: ")
+    startDate = input("Enter the start date (yyyymmdd): ")
+    endDate = input("Enter the end date (yyyymmdd): ")
+    startTime = input("Enter the start time (hhmmss): ")
+    endTime = input("Enter the end time (hhmmss): ")
+    startDateAndTime = startDate + "T" + startTime
+    endDateAndTime = endDate + "T" + endTime
+    f.write("DTSTART:"+startDateAndTime+"\n")
+    f.write("DTEND:"+endDateAndTime+"\n")
+    f.write("SUMMARY:"+summary+"\n")
+    f.write("LOCATION:"+location+"\n")
+    f.write("DESCRIPTION:"+description+"\n")
+    f.write("PRIORITY:3"+"\n")
+    f.write("END:VEVENT\nEND:VCALENDAR")
+    addEvent = input("Do you want to add another event (y/n): ")
+    f.write("\n\n")
+f.close()
